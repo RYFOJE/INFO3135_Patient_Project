@@ -5,25 +5,23 @@
 class Ailment
 {
 public:
-	typedef unsigned short score_t;
+	typedef short score_t; // Not using an unsigned so we can verify integrity of input
 
 private:
 
-	std::string name;
+	std::string name_;
 
 	score_t severity_;
-	score_t time_crit;
-	score_t contagiousness;
-	score_t calculated_score;
-	inline void calculate_score();
+	score_t time_crit_;
+	score_t contagiousness_;
 
 public:
-	Ailment();
+	Ailment(std::string name, score_t severity, score_t time_sensitivity, score_t contagiousness);
 
 	// Getters
-	std::string get_name();
-	score_t get_severity();
-	score_t get_time_sensitivity();
-	score_t get_contagiousness();
-	score_t get_score();
+	std::string get_name() const;
+	score_t get_severity() const;
+	score_t get_time_sensitivity() const;
+	score_t get_contagiousness() const;
+	score_t get_score() const;
 };
