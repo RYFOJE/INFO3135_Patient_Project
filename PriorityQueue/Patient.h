@@ -24,5 +24,18 @@ public:
 	LinkedList<Ailment> get_ailments();
 	const Ailment::score_t get_score() const;
 
+
+	/* Operators */
+	auto operator==(const Patient& other) const {
+		return (score_ == other.get_score());
+	}
+	auto operator>(const Patient& other) const {
+		return (score_ > other.get_score());
+	}
+	auto operator<(const Patient& other) const {
+		return (score_ < other.get_score());
+	}
+	
+
 };
 

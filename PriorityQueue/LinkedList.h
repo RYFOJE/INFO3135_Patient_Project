@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <stdexcept>
+
 template <typename T>
 class LinkedList
 {
@@ -108,5 +110,33 @@ public:
 		}
 
 		return counter;
+	}
+
+	Node* get_at_index(const size_t index) {
+
+		Node* currNode = begin_;
+
+		// Iterate through the linked list
+		for (int i = 0; i < index; i++) {
+			
+			// Make sure there is a next node
+			if (currNode->next != nullptr) {
+				throw std::out_of_range();
+			}
+
+			// Get the next node
+			currNode = currNode->next;
+
+		}
+
+		return currNode;
+
+	}
+
+	void swap(size_t indexFrom, size_t indexTo) {
+
+		Node* nodeFrom = get_at_index(indexFrom);
+		Node* nodeTo = get_at_index(indexTo);
+
 	}
 };
