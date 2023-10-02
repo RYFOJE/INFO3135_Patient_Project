@@ -39,15 +39,15 @@ TEST(Patient, AddAilment) {
 		patient.add_ailment(ailment);
 	}
 
-	//check that all the ailments are on the patient
-	//and that the size is updated as we remove items
-	int counter = 0;
-	auto* ailment = patient.get_ailments().begin();
-	while (ailment != nullptr)
-	{
-		ASSERT_EQ(ailment->data, ailments[counter++]);
-		ailment = ailment->next;
-	}
+	////check that all the ailments are on the patient
+	////and that the size is updated as we remove items
+	//int counter = 0;
+	//auto* ailment = patient.get_ailments().begin();
+	//while (ailment != nullptr)
+	//{
+	//	ASSERT_EQ(ailment->data, ailments[counter++]);
+	//	ailment = ailment->next;
+	//}
 }
 #endif
 

@@ -17,6 +17,7 @@ private:
 
 public:
 	Ailment(std::string name, score_t severity, score_t time_sensitivity, score_t contagiousness);
+	Ailment() : severity_(0), time_crit_(0), contagiousness_(0) , name_(""){}
 
 	// Getters
 	std::string get_name() const;

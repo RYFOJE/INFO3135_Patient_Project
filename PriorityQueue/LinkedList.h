@@ -10,6 +10,8 @@ public:
 		Node* next;
 
 		T data;
+
+		//Node() : previous(nullptr), next(nullptr){};
 	};
 
 protected:

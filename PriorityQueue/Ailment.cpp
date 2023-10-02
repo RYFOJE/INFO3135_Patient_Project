@@ -28,30 +28,29 @@ Ailment::Ailment(std::string name, score_t severity, score_t time_sensitivity, s
 
 }
 
-
 /* Ailment Getters */
 
-std::string Ailment::get_name() const
+const std::string Ailment::get_name() const
 {
 	return name_;
 }
 
-Ailment::score_t Ailment::get_severity() const
+const Ailment::score_t Ailment::get_severity() const
 {
 	return severity_;
 }
 
-Ailment::score_t Ailment::get_time_sensitivity() const
+const Ailment::score_t Ailment::get_time_sensitivity() const
 {
 	return time_crit_;
 }
 
-Ailment::score_t Ailment::get_contagiousness() const
+const Ailment::score_t Ailment::get_contagiousness() const
 {
 	return contagiousness_;
 }
 
-Ailment::score_t Ailment::get_score() const
+const Ailment::score_t Ailment::get_score() const
 {
 	return (severity_ * time_crit_) + contagiousness_;
 }

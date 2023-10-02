@@ -11,5 +11,12 @@ class Patient
 
 public:
 	
+	Patient(std::string name);
+
+	void add_ailment(Ailment ailment);
+
+	// Getters
+	const std::string get_name() const;
+
 };
 

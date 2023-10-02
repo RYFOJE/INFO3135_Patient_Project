@@ -9,13 +9,13 @@
 /*
  * 1. Test for the Ailment class
  */
-#define TEST_AILMENT_CONSTRUCTOR false
+#define TEST_AILMENT_CONSTRUCTOR true
 
 /*
  * 2. Tests for the Patient class
  */
-#define TEST_PATIENT_CONSTRUCTOR false
-#define TEST_PATIENT_ADD_AILMENT false
+#define TEST_PATIENT_CONSTRUCTOR true
+#define TEST_PATIENT_ADD_AILMENT true
 #define TEST_PATIENT_CALCULATES_CORRECT_SCORES false
 
 /*
