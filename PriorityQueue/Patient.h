@@ -14,6 +14,7 @@ public:
 	
 	/* Constructors */
 	Patient(std::string name);
+	Patient() : name_("placeholder") {}; // TODO Remove placeholder and see if there is a better way
 
 	/* Methods */
 
