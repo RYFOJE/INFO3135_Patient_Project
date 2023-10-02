@@ -2,7 +2,10 @@
 
 /* Patient Constructor */
 
-
+/// <summary>
+/// Creates a patient with a name
+/// </summary>
+/// <param name="name">The name of the patient</param>
 Patient::Patient(std::string name) : name_(name), score_(0) {
 	if (name_.empty())
 	{
@@ -10,6 +13,11 @@ Patient::Patient(std::string name) : name_(name), score_(0) {
 	}
 }
 
+
+/// <summary>
+/// Adds an ailment to the patient
+/// </summary>
+/// <param name="ailment">The ailment to add</param>
 void Patient::add_ailment(Ailment ailment)
 {
 	ailments_.push_back(ailment);
