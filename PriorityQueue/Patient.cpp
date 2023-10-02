@@ -2,7 +2,8 @@
 
 /* Patient Constructor */
 
-Patient::Patient(std::string name) : name_(name) {
+
+Patient::Patient(std::string name) : name_(name), score_(0) {
 	if (name_.empty())
 	{
 		throw std::invalid_argument("Name cannot be empty");
