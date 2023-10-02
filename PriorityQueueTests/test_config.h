@@ -16,7 +16,7 @@
  */
 #define TEST_PATIENT_CONSTRUCTOR true
 #define TEST_PATIENT_ADD_AILMENT true
-#define TEST_PATIENT_CALCULATES_CORRECT_SCORES false
+#define TEST_PATIENT_CALCULATES_CORRECT_SCORES true
 
 /*
  * 3. Tests for the PriorityQueue class

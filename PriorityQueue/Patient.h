@@ -22,6 +22,7 @@ public:
 	// Getters
 	const std::string get_name() const;
 	LinkedList<Ailment> get_ailments();
+	const Ailment::score_t get_score() const;
 
 };
 

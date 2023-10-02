@@ -36,3 +36,8 @@ LinkedList<Ailment> Patient::get_ailments()
 {
 	return ailments_;
 }
+
+const Ailment::score_t Patient::get_score() const
+{
+	return score_;
+}
