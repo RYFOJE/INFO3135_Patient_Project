@@ -25,4 +25,13 @@ public:
 	const score_t get_time_sensitivity() const;
 	const score_t get_contagiousness() const;
 	const score_t get_score() const;
+
+
+	// Operators
+
+	auto operator==(const Ailment& other) const
+	{
+		return (name_ == other.name_);
+	}
+
 };
