@@ -28,6 +28,9 @@ Ailment::Ailment(std::string name, score_t severity, score_t time_sensitivity, s
 
 }
 
+
+/* Ailment Getters */
+
 std::string Ailment::get_name() const
 {
 	return name_;
