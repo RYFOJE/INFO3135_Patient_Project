@@ -32,7 +32,7 @@ public:
 		node->data = item;
 
 		//check if there is a node to link in-front of
-		if (begin_ != nullptr)
+		if (begin_ == nullptr)
 		{
 			begin_->previous = node;
 			node->next = begin_;
@@ -120,8 +120,8 @@ public:
 		for (int i = 0; i < index; i++) {
 			
 			// Make sure there is a next node
-			if (currNode->next != nullptr) {
-				throw std::out_of_range();
+			if (currNode->next == nullptr) {
+				throw std::out_of_range("Index out of range while using get_at_index()");
 			}
 
 			// Get the next node
