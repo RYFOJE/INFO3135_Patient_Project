@@ -13,7 +13,7 @@ public:
 
 		T data;
 
-		Node(T& item) : data(item), previous(nullptr), next(nullptr) {}
+		Node(const T& item) : data(item), previous(nullptr), next(nullptr) {}
 	};
 
 protected:

@@ -66,5 +66,5 @@ const score_t Ailment::get_contagiousness() const
 
 const score_t Ailment::get_score() const
 {
-	return calculate_total_severity(this);
+	return calculate_total_severity(*this);
 }

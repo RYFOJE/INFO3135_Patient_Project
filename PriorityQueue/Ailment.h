@@ -7,6 +7,39 @@
 typedef short score_t; // Not using an unsigned so we can verify integrity of input
 
 
+/** CLASSES **/
+
+/**
+ * @brief The Ailment Class will hold 1 specific ailment and hold important information about it
+*/
+class Ailment
+{
+	std::string name_;
+
+	score_t severity_;
+	score_t time_crit_;
+	score_t contagiousness_;
+
+public:
+	Ailment(std::string name = "empty", score_t severity = 1, score_t time_sensitivity = 1, score_t contagiousness = 1);
+	
+	// Getters
+	const std::string get_name() const;
+	const score_t get_severity() const;
+	const score_t get_time_sensitivity() const;
+	const score_t get_contagiousness() const;
+	const score_t get_score() const;
+
+	bool operator== (const Ailment& other) const {
+		return this->get_score() == other.get_score();
+	}
+
+	auto operator<=> (const Ailment& other) const {
+		return this->get_score() <=> other.get_score();
+	}
+
+};
+
 /** OPERATIONS **/
 
 /**
@@ -27,31 +60,6 @@ score_t calculate_total_severity(score_t severity, score_t time_criticality, sco
 score_t calculate_total_severity(const Ailment& ailment);
 
 
-/** CLASSES **/
-
-/**
- * @brief The Ailment Class will hold 1 specific ailment and hold important information about it
-*/
-class Ailment
-{
-	std::string name_;
-
-	score_t severity_;
-	score_t time_crit_;
-	score_t contagiousness_;
-
-public:
-	Ailment(std::string name = "", score_t severity = 1, score_t time_sensitivity = 1, score_t contagiousness = 1);
-	
-	// Getters
-	const std::string get_name() const;
-	const score_t get_severity() const;
-	const score_t get_time_sensitivity() const;
-	const score_t get_contagiousness() const;
-	const score_t get_score() const;
-
-};
-
 /** OPERATORS **/
 
 /** 
@@ -60,4 +68,4 @@ public:
 * @param rhs		The right hand side of the comparison
 * @return			The comparison result
 */
-auto operator <=> (Ailment const& lhs, Ailment const& rhs) { return calculate_total_severity(lhs) <=> calculate_total_severity(rhs); }
+//auto operator <=> (Ailment const& lhs, Ailment const& rhs) { return calculate_total_severity(lhs) <=> calculate_total_severity(rhs); }
