@@ -24,16 +24,22 @@ public:
 	Ailment(std::string name = "empty", score_t severity = 1, score_t time_sensitivity = 1, score_t contagiousness = 1);
 	
 	// Getters
-	const std::string get_name() const;
-	const score_t get_severity() const;
-	const score_t get_time_sensitivity() const;
-	const score_t get_contagiousness() const;
-	const score_t get_score() const;
+	const std::string get_name() const { return name_; }
+	const score_t get_severity() const { return severity_; }
+	const score_t get_time_sensitivity() const { return time_crit_; }
+	const score_t get_contagiousness() const { return contagiousness_; }
+	const score_t get_score() const { return calculate_total_severity(*this); }
 
 	bool operator== (const Ailment& other) const {
 		return this->get_score() == other.get_score();
 	}
 
+	/**
+	* @brief			Compares two Ailments based on their total severity
+	* @param lhs		The left hand side of the comparison
+	* @param rhs		The right hand side of the comparison
+	* @return			The comparison result
+	*/
 	auto operator<=> (const Ailment& other) const {
 		return this->get_score() <=> other.get_score();
 	}
@@ -58,14 +64,3 @@ score_t calculate_total_severity(score_t severity, score_t time_criticality, sco
  * @return					The total severity of the ailment
 */
 score_t calculate_total_severity(const Ailment& ailment);
-
-
-/** OPERATORS **/
-
-/** 
-* @brief			Compares two Ailments based on their total severity
-* @param lhs		The left hand side of the comparison
-* @param rhs		The right hand side of the comparison
-* @return			The comparison result
-*/
-//auto operator <=> (Ailment const& lhs, Ailment const& rhs) { return calculate_total_severity(lhs) <=> calculate_total_severity(rhs); }
