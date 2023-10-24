@@ -29,7 +29,6 @@ score_t calculate_total_severity(const Ailment& ailment);
 
 /** CLASSES **/
 
-
 /**
  * @brief The Ailment Class will hold 1 specific ailment and hold important information about it
 */

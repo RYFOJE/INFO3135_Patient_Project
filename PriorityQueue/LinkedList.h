@@ -13,7 +13,7 @@ public:
 
 		T data;
 
-		//Node() : previous(nullptr), next(nullptr){};
+		Node(T& item) : data(item), previous(nullptr), next(nullptr) {}
 	};
 
 protected:
@@ -28,8 +28,7 @@ public:
 
 	void push_front(const T& item)
 	{
-		Node* node = new Node();
-		node->data = item;
+		Node* node = new Node(item);
 
 		//check if there is a node to link in-front of
 		if (begin_ == nullptr)
@@ -47,8 +46,7 @@ public:
 
 	void push_back(const T& item)
 	{
-		Node* node = new Node();
-		node->data = item;
+		Node* node = new Node(item);
 
 		if (begin_ == nullptr && end_ == nullptr)
 		{
