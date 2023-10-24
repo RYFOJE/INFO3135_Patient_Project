@@ -2,13 +2,39 @@
 
 #include <string>
 
+
+/** TYPEDEFS **/
+typedef short score_t; // Not using an unsigned so we can verify integrity of input
+
+
+/** OPERATIONS **/
+
+/**
+ * @brief					Calculates the total severity of an ailment
+ * @param severity			The severity of the ailment
+ * @param time_criticality	The time criticality of the ailment
+ * @param contagiousness	The contagiousness of the ailment
+ * @return					The total severity of the ailment
+*/
+score_t calculate_total_severity(score_t severity, score_t time_criticality, score_t contagiousness);
+
+
+/**
+ * @brief					Calculates the total severity of an ailment
+ * @param ailment			The ailment to calculate the severity of
+ * @return					The total severity of the ailment
+*/
+score_t calculate_total_severity(const Ailment& ailment);
+
+
+/** CLASSES **/
+
+
+/**
+ * @brief The Ailment Class will hold 1 specific ailment and hold important information about it
+*/
 class Ailment
 {
-public:
-	typedef short score_t; // Not using an unsigned so we can verify integrity of input
-
-private:
-
 	std::string name_;
 
 	score_t severity_;
@@ -16,9 +42,8 @@ private:
 	score_t contagiousness_;
 
 public:
-	Ailment(std::string name, score_t severity, score_t time_sensitivity, score_t contagiousness);
-	Ailment() : severity_(0), time_crit_(0), contagiousness_(0) , name_(""){} // TODO See if there is a better way of applying this code as it is double assigning with default constructor
-
+	Ailment(std::string name = "", score_t severity = 1, score_t time_sensitivity = 1, score_t contagiousness = 1);
+	
 	// Getters
 	const std::string get_name() const;
 	const score_t get_severity() const;
@@ -26,12 +51,14 @@ public:
 	const score_t get_contagiousness() const;
 	const score_t get_score() const;
 
-
-	// Operators
-
-	auto operator==(const Ailment& other) const
-	{
-		return (name_ == other.name_);
-	}
-
 };
+
+/** OPERATORS **/
+
+/** 
+* @brief			Compares two Ailments based on their total severity
+* @param lhs		The left hand side of the comparison
+* @param rhs		The right hand side of the comparison
+* @return			The comparison result
+*/
+auto operator <=> (Ailment const& lhs, Ailment const& rhs) { return calculate_total_severity(lhs) <=> calculate_total_severity(rhs); }

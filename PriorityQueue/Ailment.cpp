@@ -1,6 +1,20 @@
 ﻿#include "Ailment.h"
 #include <stdexcept>
 
+
+/** Functions **/
+
+score_t calculate_total_severity(score_t severity, score_t time_criticality, score_t contagiousness)
+{
+	return (severity * time_criticality) + contagiousness;
+}
+
+score_t calculate_total_severity(const Ailment& ailment)
+{
+	return calculate_total_severity(ailment.get_severity(), ailment.get_time_sensitivity(), ailment.get_contagiousness());
+}
+
+
 /* Ailment Constructors */
 
 Ailment::Ailment(std::string name, score_t severity, score_t time_sensitivity, score_t contagiousness):
@@ -35,22 +49,22 @@ const std::string Ailment::get_name() const
 	return name_;
 }
 
-const Ailment::score_t Ailment::get_severity() const
+const score_t Ailment::get_severity() const
 {
 	return severity_;
 }
 
-const Ailment::score_t Ailment::get_time_sensitivity() const
+const score_t Ailment::get_time_sensitivity() const
 {
 	return time_crit_;
 }
 
-const Ailment::score_t Ailment::get_contagiousness() const
+const score_t Ailment::get_contagiousness() const
 {
 	return contagiousness_;
 }
 
-const Ailment::score_t Ailment::get_score() const
+const score_t Ailment::get_score() const
 {
-	return (severity_ * time_crit_) + contagiousness_;
+	return calculate_total_severity(this);
 }
