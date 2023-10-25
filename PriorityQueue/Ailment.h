@@ -22,13 +22,13 @@ class Ailment
 
 public:
 	Ailment(std::string name = "empty", score_t severity = 1, score_t time_sensitivity = 1, score_t contagiousness = 1);
-	
+
 	// Getters
 	const std::string get_name() const { return name_; }
 	const score_t get_severity() const { return severity_; }
 	const score_t get_time_sensitivity() const { return time_crit_; }
 	const score_t get_contagiousness() const { return contagiousness_; }
-	const score_t get_score() const { return calculate_total_severity(*this); }
+	const score_t get_score() const;
 
 	bool operator== (const Ailment& other) const {
 		return this->get_score() == other.get_score();

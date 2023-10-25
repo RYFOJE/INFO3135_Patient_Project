@@ -27,7 +27,7 @@ protected:
 	size_t size_; // TODO REMOVE IF NOT IMPLEMENTED
 
 public:
-	LinkedList() : begin_(nullptr), end_(nullptr), size(0) {}
+	LinkedList() : begin_(nullptr), end_(nullptr), size_(0) {}
 
 	Node* begin() { return begin_; }
 	Node* end() { return end_; }
