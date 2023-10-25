@@ -38,6 +38,46 @@ TEST(LinkedList, Swap) {
 	ASSERT_EQ(linkedList.get_at_index(0)->data, 2);
 	ASSERT_EQ(linkedList.get_at_index(1)->data, 1);
 
+	linkedList.swap(0, 1);
+
+	ASSERT_EQ(linkedList.get_at_index(0)->data, 1);
+	ASSERT_EQ(linkedList.get_at_index(1)->data, 2);
+}
+
+TEST(LinkedList, PushBack) {
+	
+	linkedList.push_back(10);
+	
+	ASSERT_EQ(linkedList.get_at_index(4)->data, 10);
+	
+}
+
+TEST(LinkedList, PushFront) {
+
+	linkedList.push_front(-1);
+
+	ASSERT_EQ(linkedList.get_at_index(0)->data, -1);
+
+}
+
+TEST(LinkedList, PopBack) {
+
+	int i = linkedList.pop_back();
+	int i2 = linkedList.pop_back();
+
+	ASSERT_EQ(i, 10);
+	ASSERT_EQ(i2, 4);
+
+}
+
+TEST(LinkedList, PopFront) {
+
+	int i = linkedList.pop_front();
+	int i2 = linkedList.pop_front();
+
+	ASSERT_EQ(i, -1);
+	ASSERT_EQ(i2, 1);
+
 }
 #endif
 

@@ -94,9 +94,9 @@ public:
 		const T value = node->data;
 		head_ = node->next;
 
-		// TODO delete node
+		delete node;
 
-		size--;
+		size_--;
 		return value;
 	}
 
@@ -110,9 +110,11 @@ public:
 
 		Node* node = tail_;
 		const T value = node->data;
-		head_ = node->previous;
+		tail_ = node->previous;
 
-		size--;
+		delete node;
+
+		size_--;
 		return value;
 	}
 
