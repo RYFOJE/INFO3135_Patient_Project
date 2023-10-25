@@ -45,23 +45,22 @@ public:
 	 * @param item	The item to add to the list
 	*/
 	void push_front(const T& item)
-	{
-		Node* node = new Node(item);
+{
+    Node* node = new Node(item);
 
-		//check if there is a node to link in-front of
-		if (head_ == nullptr)
-		{
-			head_->previous = node;
-			node->next = head_;
-		}
-		else
-		{
-			tail_ = node;
-		}
-
-		head_ = node;
-		size_++;
-	}
+    if (head_ == nullptr)
+    {
+        head_ = node;
+        tail_ = node;
+    }
+    else
+    {
+        head_->previous = node;
+        node->next = head_;
+        head_ = node;
+    }
+    size_++;
+}
 
 	/**
 	 * @brief		Adds an element to the end of the list
@@ -71,17 +70,15 @@ public:
 	{
 		Node* node = new Node(item);
 
-		if (head_ == nullptr && tail_ == nullptr)
-		{
+		if (head_ == nullptr && tail_ == nullptr) {
 			head_ = node;
 			tail_ = node;
-			return;
 		}
-
-		node->previous = tail_;
-		tail_->next = node;
-
-		tail_ = node;
+		else {
+			node->previous = tail_;
+			tail_->next = node;
+			tail_ = node;
+		}		
 		size_++;
 	}
 
