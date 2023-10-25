@@ -15,7 +15,7 @@ public:
 		Node* previous;
 		Node* next;
 
-		const T data;
+		T data;
 
 		Node(const T& item) : data(item), previous(nullptr), next(nullptr) {}
 	};
@@ -27,7 +27,7 @@ protected:
 	size_t size_; // TODO REMOVE IF NOT IMPLEMENTED
 
 public:
-	LinkedList() : begin_(nullptr), end_(nullptr) {}
+	LinkedList() : begin_(nullptr), end_(nullptr), size(0) {}
 
 	Node* begin() { return begin_; }
 	Node* end() { return end_; }
@@ -81,11 +81,7 @@ public:
 	*/
 	T pop_front()
 	{
-		if (begin_ == nullptr)
-		{
-			//todo: throw
-			throw "";
-		}
+		if (begin_ == nullptr) throw std::out_of_range("Linked List is empty, cannot pop.");
 
 		Node* node = begin_;
 		const T value = node->data;
@@ -102,11 +98,7 @@ public:
 	*/
 	T pop_back()
 	{
-		if (end_ == nullptr)
-		{
-			//todo: throw
-			throw "";
-		}
+		if (end_ == nullptr) throw std::out_of_range("Linked List is empty, cannot pop.");
 
 		Node* node = end_;
 		const T value = node->data;
@@ -178,11 +170,20 @@ public:
 	*/
 	void swap(size_t indexFrom, size_t indexTo) {
 
+		// Get the nodes at the specified indexes and store pointers to them
 		Node* nodeFrom = get_at_index(indexFrom);
 		Node* nodeTo = get_at_index(indexTo);
 
-		// TODO Complete this function
+		// Swap the nodes
+		Node* temp = nodeFrom->next;
+		Node* temp2 = nodeFrom->previous;
 
+		nodeFrom->next = nodeTo->next;
+		nodeFrom->previous = nodeTo.previous;
+
+		nodeTo->next = temp;
+		nodeTo->previous = temp2;
+		
 	}
 
 };
