@@ -26,9 +26,10 @@ protected:
 	size_t size_; // Amount of nodes in list
 
 public:
-	
-	/** CONSTRUCTORS **/
-	LinkedList() : head_(nullptr), tail_(nullptr), size(0) {}
+	LinkedList() : begin_(nullptr), end_(nullptr), size_(0) {}
+
+	Node* begin() { return begin_; }
+	Node* end() { return end_; }
 
 	/** GETTERS **/
 	Node* begin() { return head_; }
