@@ -6,31 +6,30 @@ class PriorityQueue
 {
 	LinkedList<T> patients_;
 	
+	// USING INSERTION SORT AS THE DATA IS "online" AND WE CAN SORT AS WE GO
 	void sort() {
 
-		T keyNode;
-		size_t i, j;
-		for (i = 1; i < size(); i++) {
-			j = 1;
+		int i, j, key;
 
-			while (j > 0 && patients_.get_at_index(j) < patients_.get_at_index(j - 1)) {
-				
+		for (i = 1; i < patients_.size(); i++) {
+			key = i;
+			j = i - 1;
+			
+			// TODO FIND A BETTER WAY TO IMPLEMENT THIS
+			while (j >= 0 && patients_.get_at_index(j) > patients_.get_at_index(key)) { 
 				patients_.swap(j, j - 1);
-
 				j--;
-
-			}
-
+				
+			}	
 		}
-
 	}
 
 public:
 
 
 	void enqueue(T object) {
-		patients_.push_back(object); // We push back so it willl be the first sorted element
-		sort();
+		patients_.push_front(object); // We push back so it will be the first sorted element
+		//sort();
 	};
 
 	T dequeue() {

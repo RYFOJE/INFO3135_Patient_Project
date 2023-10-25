@@ -18,6 +18,12 @@ public:
 		T data;
 
 		Node(const T& item) : data(item), previous(nullptr), next(nullptr) {}
+
+		// TODO TEST THIS CODE
+		auto operator<=>(const Node& other) const {
+			return data <=> other.data;
+		}
+
 	};
 
 protected:
@@ -88,15 +94,20 @@ public:
 	*/
 	T pop_front()
 	{
-		if (head_ == nullptr) throw std::out_of_range("Linked List is empty, cannot pop.");
+		if (size_ == 0) throw std::out_of_range("Linked List is empty, cannot pop.");
 
 		Node* node = head_;
 		const T value = node->data;
 		head_ = node->next;
 
-		delete node;
+		// Update tail to nullptr when the list becomes empty
+		if (head_ == nullptr) {
+			tail_ = nullptr; 
+		}
 
+		delete node;
 		size_--;
+
 		return value;
 	}
 
@@ -106,11 +117,16 @@ public:
 	*/
 	T pop_back()
 	{
-		if (tail_ == nullptr) throw std::out_of_range("Linked List is empty, cannot pop.");
+		if (size_ == 0) throw std::out_of_range("Linked List is empty, cannot pop.");
 
 		Node* node = tail_;
 		const T value = node->data;
 		tail_ = node->previous;
+
+		// Update head to nullptr when the list becomes empty
+		if (tail_ == nullptr) {
+			head_ = nullptr;
+		}
 
 		delete node;
 
