@@ -13,6 +13,34 @@
 std::vector<Patient> generate_ordered_patient_set();
 std::vector<Patient> generate_unordered_patient_set();
 
+
+// TODO REMOVE THIS BEFORE SUBMITTING
+#if TEST_LINKED_LIST
+
+LinkedList<int> linkedList;
+
+TEST(LinkedList, GetElement) {
+
+	linkedList.push_back(1);
+	linkedList.push_back(2);
+	linkedList.push_back(3);
+	linkedList.push_back(4);
+
+	ASSERT_EQ(linkedList.get_at_index(0)->data, 1);
+	ASSERT_EQ(linkedList.get_at_index(1)->data, 2);
+
+}
+
+TEST(LinkedList, Swap) {
+
+	linkedList.swap(0, 1);
+
+	ASSERT_EQ(linkedList.get_at_index(0)->data, 2);
+	ASSERT_EQ(linkedList.get_at_index(1)->data, 1);
+
+}
+#endif
+
 #if TEST_PRIORITY_QUEUE_CONSTRUCTOR
 TEST(PriorityQueue, Constructor) {
 	PriorityQueue<Patient> queue;

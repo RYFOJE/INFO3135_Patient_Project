@@ -27,11 +27,18 @@ protected:
 	size_t size_;
 
 public:
+
+	/** CONSTRUCTOR **/
 	LinkedList() : head_(nullptr), tail_(nullptr), size_(0) {}
 
+
+	/** GETTERS **/
 	Node* begin() const { return head_; }
 	Node* end() const { return tail_; }
 	size_t size() const { return size_; }
+
+
+	/** LINKED LIST FUNCTIONS **/
 
 	/**
 	 * @brief		Adds an element to the beginning of the list
@@ -134,6 +141,7 @@ public:
 		for (int i = 0; i < index; i++) {
 
 			// Make sure there is a next node
+			// TODO MOVE THIS OUT OF THE LOOP AND COMPARE IT TO SIZE. THIS WILL OPTIMIZE
 			if (currNode->next == nullptr) {
 				throw std::out_of_range("Index out of range while using get_at_index()");
 			}
@@ -153,20 +161,12 @@ public:
 	 * @param indexTo		index to swap to
 	*/
 	void swap(size_t indexFrom, size_t indexTo) {
+		
+		// Initially, I was using swapping of pointers but it's more efficient to swap the data itself
 
-		// Get the nodes at the specified indexes and store pointers to them
-		Node* nodeFrom = get_at_index(indexFrom);
-		Node* nodeTo = get_at_index(indexTo);
-
-		// Swap the nodes
-		Node* temp = nodeFrom->next;
-		Node* temp2 = nodeFrom->previous;
-
-		nodeFrom->next = nodeTo->next;
-		nodeFrom->previous = nodeTo.previous;
-
-		nodeTo->next = temp;
-		nodeTo->previous = temp2;
+		T temp = get_at_index(indexFrom)->data;
+		get_at_index(indexFrom)->data = get_at_index(indexTo)->data;
+		get_at_index(indexTo)->data = temp;
 
 	}
 };
