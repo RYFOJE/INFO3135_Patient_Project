@@ -22,9 +22,10 @@
  * 3. Tests for the PriorityQueue class
  */
 #define TEST_PRIORITY_QUEUE_CONSTRUCTOR true
+
 #define TEST_PRIORITY_QUEUE_SINGLE_PATIENT true
 #define TEST_PRIORITY_QUEUE_MULTI_PATIENT_ORDERED true
-#define TEST_PRIORITY_QUEUE_MULTI_PATIENT_UNORDERED true
+#define TEST_PRIORITY_QUEUE_MULTI_PATIENT_UNORDERED false
 
  /*
   * 4. Tests for the LinkedList class

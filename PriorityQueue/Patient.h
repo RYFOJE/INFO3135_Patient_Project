@@ -14,7 +14,6 @@ public:
 	
 	/* Constructors */
 	Patient(std::string name);
-	Patient() : name_("placeholder") {}; // TODO Remove placeholder and see if there is a better way
 
 	/* Methods */
 
@@ -36,7 +35,6 @@ public:
 	auto operator<(const Patient& other) const {
 		return (score_ < other.get_score());
 	}
-	
 
 };
 

@@ -16,7 +16,8 @@ class PriorityQueue
 			j = i - 1;
 			
 			// TODO FIND A BETTER WAY TO IMPLEMENT THIS
-			while (j > 0 && patients_.get_at_index(j) < patients_.get_at_index(key)) { 
+			// TODO FIX COMPARAISON OPERATOR
+			while (j > 0 && patients_.get_at_index(j)->data > patients_.get_at_index(key)->data) { 
 				patients_.swap(j, j - 1);
 				j--;
 				

@@ -19,11 +19,6 @@ public:
 
 		Node(const T& item) : data(item), previous(nullptr), next(nullptr) {}
 
-		// TODO TEST THIS CODE
-		auto operator<=>(const Node& other) const {
-			return data <=> other.data;
-		}
-
 	};
 
 protected:
