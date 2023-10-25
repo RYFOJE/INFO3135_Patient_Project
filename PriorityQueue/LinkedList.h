@@ -10,8 +10,7 @@ public:
 	/**
 	 * @brief The Node struct will hold the data for each element in the list
 	*/
-	struct Node
-	{
+	struct Node {
 		Node* previous;
 		Node* next;
 
@@ -21,17 +20,23 @@ public:
 	};
 
 protected:
-	Node* begin_;
-	Node* end_;
+	Node* head_; // First element in the list
+	Node* tail_; // Last element in the list
 
-	size_t size_; // TODO REMOVE IF NOT IMPLEMENTED
+	size_t size_; // Amount of nodes in list
 
 public:
-	LinkedList() : begin_(nullptr), end_(nullptr), size(0) {}
+	
+	/** CONSTRUCTORS **/
+	LinkedList() : head_(nullptr), tail_(nullptr), size(0) {}
 
-	Node* begin() { return begin_; }
-	Node* end() { return end_; }
+	/** GETTERS **/
+	Node* begin() { return head_; }
+	Node* end() { return tail_; }
+	size_t size() { return size_; }
 
+	/** LINKED LIST OPERATIONS **/
+	
 	/**
 	 * @brief		Adds an element to the beginning of the list
 	 * @param item	The item to add to the list
@@ -41,51 +46,52 @@ public:
 		Node* node = new Node(item);
 
 		//check if there is a node to link in-front of
-		if (begin_ == nullptr)
+		if (head_ == nullptr)
 		{
-			begin_->previous = node;
-			node->next = begin_;
+			head_->previous = node;
+			node->next = head_;
 		}
 		else
 		{
-			end_ = node;
+			tail_ = node;
 		}
 
-		begin_ = node;
+		head_ = node;
+		count_++;
 	}
 
 	/**
 	 * @brief		Adds an element to the end of the list
 	 * @param item	The item to add to the list
 	*/
-	void push_back(const T& item)
-	{
+	void push_back(const T& item) {
+		
 		Node* node = new Node(item);
 
-		if (begin_ == nullptr && end_ == nullptr)
+		if (head_ == nullptr && tail_ == nullptr)
 		{
-			begin_ = node;
-			end_ = node;
+			head_ = node;
+			tail_ = node;
 			return;
 		}
 
-		node->previous = end_;
-		end_->next = node;
+		node->previous = tail_;
+		tail_->next = node;
 
-		end_ = node;
+		tail_ = node;
 	}
 
 	/**
 	 * @brief	Removes the first element of the list and returns it
 	 * @return	The first element of the list of type T
 	*/
-	T pop_front()
-	{
-		if (begin_ == nullptr) throw std::out_of_range("Linked List is empty, cannot pop.");
+	T pop_front() {
+		
+		if (head_ == nullptr) throw std::out_of_range("Linked List is empty, cannot pop.");
 
-		Node* node = begin_;
+		Node* node = head_;
 		const T value = node->data;
-		begin_ = node->next;
+		head_ = node->next;
 
 		// TODO delete node
 
@@ -98,11 +104,11 @@ public:
 	*/
 	T pop_back()
 	{
-		if (end_ == nullptr) throw std::out_of_range("Linked List is empty, cannot pop.");
+		if (tail_ == nullptr) throw std::out_of_range("Linked List is empty, cannot pop.");
 
-		Node* node = end_;
+		Node* node = tail_;
 		const T value = node->data;
-		begin_ = node->previous;
+		head_ = node->previous;
 
 		return value;
 	}
@@ -113,28 +119,7 @@ public:
 	*/
 	bool empty() const
 	{
-		return begin_ == nullptr;
-	}
-
-	/**
-	 * @brief	Returns the size of the list
-	 * @return	The size of the list
-	*/
-	size_t size() const
-	{
-
-		// TODO Maybe implement a counter in the LinkedList class
-		
-		size_t counter = 0;
-
-		Node* node = begin_;
-		while (node != nullptr)
-		{
-			++counter;
-			node = node->next;
-		}
-
-		return counter;
+		return head_ == nullptr;
 	}
 
 	/**
@@ -144,7 +129,7 @@ public:
 	*/
 	Node* get_at_index(const size_t index) {
 
-		Node* currNode = begin_;
+		Node* currNode = head_;
 
 		// Iterate through the linked list
 		for (int i = 0; i < index; i++) {
