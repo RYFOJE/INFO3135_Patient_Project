@@ -16,7 +16,7 @@ class PriorityQueue
 			j = i - 1;
 			
 			// TODO FIND A BETTER WAY TO IMPLEMENT THIS
-			while (j >= 0 && patients_.get_at_index(j) > patients_.get_at_index(key)) { 
+			while (j > 0 && patients_.get_at_index(j) < patients_.get_at_index(key)) { 
 				patients_.swap(j, j - 1);
 				j--;
 				
@@ -29,7 +29,7 @@ public:
 
 	void enqueue(T object) {
 		patients_.push_front(object); // We push back so it will be the first sorted element
-		//sort();
+		sort();
 	};
 
 	T dequeue() {
