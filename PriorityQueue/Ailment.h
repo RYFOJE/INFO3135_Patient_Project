@@ -48,6 +48,7 @@ public:
 
 /** OPERATIONS **/
 
+
 /**
  * @brief					Calculates the total severity of an ailment
  * @param severity			The severity of the ailment

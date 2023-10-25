@@ -15,7 +15,7 @@ public:
 		Node* previous;
 		Node* next;
 
-		T data;
+		const T data;
 
 		Node(const T& item) : data(item), previous(nullptr), next(nullptr) {}
 	};
