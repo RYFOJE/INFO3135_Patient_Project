@@ -4,6 +4,10 @@
 #include <string>
 #include <iostream>
 
+
+/**
+ * @brief The Patient class will hold the data for each patient in the hospital
+*/
 class Patient
 {
 	std::string name_;
@@ -13,10 +17,19 @@ class Patient
 public:
 	
 	/* Constructors */
+
+	/**
+	 * @brief		Creates a patient with a name
+	 * @param name	The name of the patient
+	 */
 	Patient(std::string name);
 
 	/* Methods */
 
+	/**
+	 * @brief			Adds an ailment to the patient and calculates the patient's new risk score
+	 * @param ailment	The ailment to add
+	 */
 	void add_ailment(Ailment ailment);
 
 	// Getters
