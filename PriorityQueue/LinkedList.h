@@ -6,11 +6,12 @@ template <typename T>
 class LinkedList
 {
 public:
-	
+
 	/**
 	 * @brief The Node struct will hold the data for each element in the list
 	*/
-	struct Node {
+	struct Node
+	{
 		Node* previous;
 		Node* next;
 
@@ -20,24 +21,18 @@ public:
 	};
 
 protected:
-	Node* head_; // First element in the list
-	Node* tail_; // Last element in the list
+	Node* head_;
+	Node* tail_;
 
-	size_t size_; // Amount of nodes in list
+	size_t size_;
 
 public:
-	LinkedList() : begin_(nullptr), end_(nullptr), size_(0) {}
+	LinkedList() : head_(nullptr), tail_(nullptr), size_(0) {}
 
-	Node* begin() { return begin_; }
-	Node* end() { return end_; }
+	Node* begin() const { return head_; }
+	Node* end() const { return tail_; }
+	size_t size() const { return size_; }
 
-	/** GETTERS **/
-	Node* begin() { return head_; }
-	Node* end() { return tail_; }
-	size_t size() { return size_; }
-
-	/** LINKED LIST OPERATIONS **/
-	
 	/**
 	 * @brief		Adds an element to the beginning of the list
 	 * @param item	The item to add to the list
@@ -58,15 +53,15 @@ public:
 		}
 
 		head_ = node;
-		count_++;
+		size_++;
 	}
 
 	/**
 	 * @brief		Adds an element to the end of the list
 	 * @param item	The item to add to the list
 	*/
-	void push_back(const T& item) {
-		
+	void push_back(const T& item)
+	{
 		Node* node = new Node(item);
 
 		if (head_ == nullptr && tail_ == nullptr)
@@ -80,14 +75,15 @@ public:
 		tail_->next = node;
 
 		tail_ = node;
+		size_++;
 	}
 
 	/**
 	 * @brief	Removes the first element of the list and returns it
 	 * @return	The first element of the list of type T
 	*/
-	T pop_front() {
-		
+	T pop_front()
+	{
 		if (head_ == nullptr) throw std::out_of_range("Linked List is empty, cannot pop.");
 
 		Node* node = head_;
@@ -96,6 +92,7 @@ public:
 
 		// TODO delete node
 
+		size--;
 		return value;
 	}
 
@@ -111,6 +108,7 @@ public:
 		const T value = node->data;
 		head_ = node->previous;
 
+		size--;
 		return value;
 	}
 
@@ -134,7 +132,7 @@ public:
 
 		// Iterate through the linked list
 		for (int i = 0; i < index; i++) {
-			
+
 			// Make sure there is a next node
 			if (currNode->next == nullptr) {
 				throw std::out_of_range("Index out of range while using get_at_index()");
@@ -169,7 +167,6 @@ public:
 
 		nodeTo->next = temp;
 		nodeTo->previous = temp2;
-		
-	}
 
+	}
 };
