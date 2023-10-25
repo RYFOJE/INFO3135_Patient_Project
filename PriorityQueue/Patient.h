@@ -8,7 +8,7 @@ class Patient
 {
 	std::string name_;
 	LinkedList<Ailment> ailments_;
-	score_t score_;
+	score_t score_; // TODO - calculate score based on ailments only when adding to priority queue
 
 public:
 	
@@ -22,7 +22,7 @@ public:
 	// Getters
 	const std::string get_name() const;
 	LinkedList<Ailment> get_ailments();
-	const score_t get_score() const;
+	const score_t get_score() const; 
 
 
 	/* Operators */
