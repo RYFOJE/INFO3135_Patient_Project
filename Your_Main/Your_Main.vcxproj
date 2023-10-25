@@ -158,9 +158,11 @@
   <ItemGroup>
     <ClCompile Include="console.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="singleton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="console.hpp" />
+    <ClInclude Include="singleton.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

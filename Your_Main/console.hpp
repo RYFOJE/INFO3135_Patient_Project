@@ -3,7 +3,13 @@ namespace console {
 	
 	void print_main_menu();
 
-	void print_add_patient_menu();
+	// ADD PATIENT MENU
+
+	void add_patient_menu();
+	
+	void add_patient_ailment();
+
+	// OTHERS
 
 	void print_process_patient();
 

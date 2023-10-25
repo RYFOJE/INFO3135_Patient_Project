@@ -21,9 +21,15 @@
     <ClCompile Include="console.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="singleton.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="console.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
