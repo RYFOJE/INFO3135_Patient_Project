@@ -11,6 +11,8 @@ namespace console {
 
 	// OTHERS
 
+	int read_int();
+
 	void print_process_patient();
 
 	void print_display_queue();
@@ -18,7 +20,6 @@ namespace console {
 	void print_proecessed_patients();
 
 	void clear_screen();
-
 
 	void load_queue();
 

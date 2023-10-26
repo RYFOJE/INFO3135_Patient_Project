@@ -55,4 +55,20 @@ namespace console
 		std::cout << "\033[2J\033[1;1H";// TODO FIX THIS
 	}
 
+	int read_int() {
+
+			std::string str;
+			std::getline(std::cin, str);
+
+			try {
+				return std::stoi(str);
+			}
+			catch (std::invalid_argument& e) {
+				return -1;
+			}
+			
+
+
+	}
+
 }
