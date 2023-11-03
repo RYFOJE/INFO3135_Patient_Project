@@ -18,6 +18,7 @@ class PriorityQueue
 	*/
 	void sort() {
 
+
 		int i, j, key;
 
 		for (i = 1; i < patients_.size(); i++) {
@@ -32,6 +33,7 @@ class PriorityQueue
 				
 			}	
 		}
+	
 	}
 
 public:
@@ -53,6 +55,10 @@ public:
 		return patients_.pop_back();
 	}
 
+	T peek() {
+		return patients_.peek_tail();
+	}
+
 	/**
 	 * @brief	Returns the size of the queue
 	 * @return	The size of the queue
@@ -67,6 +73,10 @@ public:
 	*/
 	bool empty() {
 		return patients_.empty();
+	}
+
+	LinkedList<T>& get_patient_list() {
+		return patients_;
 	}
 
 };

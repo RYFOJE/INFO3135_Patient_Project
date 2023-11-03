@@ -4,7 +4,7 @@
 
 
 /** TYPEDEFS **/
-typedef short score_t; // Not using an unsigned so we can verify integrity of input
+typedef long score_t; // Not using an unsigned so we can verify integrity of input
 
 
 /** CLASSES **/

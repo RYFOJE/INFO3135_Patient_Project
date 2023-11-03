@@ -71,4 +71,19 @@ namespace console
 
 	}
 
+	void wait_for_enter(std::string const message) {
+
+		if (!message.empty()) {
+			std::cout << message << std::endl;
+		}
+
+		std::cout << "Press Enter to Return...";
+
+		std::string temp = "";
+		getline(std::cin, temp);
+		console::clear_screen();
+		return;
+
+	}
+
 }

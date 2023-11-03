@@ -13,17 +13,8 @@ namespace console {
 
 	int read_int();
 
-	void print_process_patient();
-
-	void print_display_queue();
-
-	void print_proecessed_patients();
-
 	void clear_screen();
 
-	void load_queue();
+	void wait_for_enter(std::string const message = "");
 
-	void save_queue();
-
-	void print_exit();
 }

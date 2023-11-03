@@ -37,5 +37,10 @@ private:
 
 	void add_ailment_menu(Patient& patient);
 
+	void process_next_patient();
+
+	void display_queue();
+
+	void display_processed();
 
 };

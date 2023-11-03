@@ -169,6 +169,27 @@ public:
 
 	}
 
+	// TODO Find a better way to do this
+	T get_value_at_index(const size_t index) {
+
+		Node* curr = get_at_index(index);
+
+		return curr->data;
+
+	}
+
+	T peek_tail() {
+
+		return tail_->data;
+
+	}
+
+	T peek_head() {
+
+		return head_->data;
+
+	}
+
 	/**
 	 * @brief				Swap two elements in the linked list
 	 * @param indexFrom		index to swap from
