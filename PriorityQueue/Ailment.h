@@ -21,9 +21,16 @@ class Ailment
 	score_t contagiousness_;
 
 public:
+	/**
+	 * @brief					Constructor for the Ailment class
+	 * @param name				The name of the ailment
+	 * @param severity			The severity of the ailment
+	 * @param time_sensitivity	The time sensitivity of the ailment
+	 * @param contagiousness	The contagiousness of the ailment
+	*/
 	Ailment(std::string name, score_t severity, score_t time_sensitivity, score_t contagiousness);
 
-	// Getters
+	// GETTERS
 	const std::string get_name() const { return name_; }
 	const score_t get_severity() const { return severity_; }
 	const score_t get_time_sensitivity() const { return time_crit_; }
