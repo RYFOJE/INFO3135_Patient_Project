@@ -4,7 +4,7 @@
 
 // HELPERS
 
-Patient add_patient_from_string(std::string& const patient_str) {
+Patient add_patient_from_string(std::string const &patient_str) {
 
 	std::istringstream iss(patient_str);
 
@@ -27,7 +27,7 @@ Patient add_patient_from_string(std::string& const patient_str) {
 	getline(iss, temp_str, ',');
 
 	// Go through all ailments
-	for (int i = 0; i < ailmentCount; i++) {
+	for (unsigned int i = 0; i < ailmentCount; i++) {
 
 		std::string ailmentName;
 		score_t severity, time_crit, contagiousness;
@@ -340,7 +340,7 @@ void MainProgram::load_queue_menu() {
 
 }
 
-void MainProgram::load_from_file(std::filesystem::path& const filePath) {
+void MainProgram::load_from_file(std::filesystem::path const &filePath) {
 
 	std::ifstream file(filePath);
 

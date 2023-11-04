@@ -89,7 +89,7 @@ private:
 	/**
 	 * @brief Helper function that loads all patients from a file
 	*/
-	void load_from_file(std::filesystem::path& const path);
+	void load_from_file(std::filesystem::path const &path);
 
 
 	// Private copy constructor and assignment operator to prevent copying therefore making it a singleton
