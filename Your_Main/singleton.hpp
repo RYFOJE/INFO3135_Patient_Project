@@ -4,6 +4,10 @@
 #include <Ailment.h>
 #include <Patient.h>
 
+#include <filesystem>
+#include <fstream>
+#include <sstream>
+
 
 class MainProgram {
 	
@@ -42,5 +46,9 @@ private:
 	void display_queue();
 
 	void display_processed();
+
+	void load_queue_menu();
+	
+	void load_from_file(std::filesystem::path& const path);
 
 };

@@ -1,6 +1,60 @@
 #include "singleton.hpp"
 #include "console.hpp"
 
+
+// HELPERS
+
+Patient add_patient_from_string(std::string& const patient_str) {
+
+	std::istringstream iss(patient_str);
+
+	// TODO ADD ERROR HANDLING
+
+	// Get patient name
+	std::string name;
+	getline(iss, name, ','); // Get with delimeter ','
+
+	Patient tempPatient(name);
+
+	// Get ailment count
+	unsigned ailmentCount;
+	iss >> ailmentCount;
+
+	// tmp string for removing delimeters
+	std::string temp_str;
+
+	// Remove delimeter
+	getline(iss, temp_str, ',');
+
+	// Go through all ailments
+	for (int i = 0; i < ailmentCount; i++) {
+
+		std::string ailmentName;
+		score_t severity, time_crit, contagiousness;
+
+		getline(iss, ailmentName, ',');					/* Get the ailment name */
+
+		iss >> severity;								/* Get the severity */
+		getline(iss, temp_str, ',');					/* Remove the delimeter */
+
+		iss >> time_crit;								/* Get the time_crit */
+		getline(iss, temp_str, ',');					/* Remove the delimeter */
+
+		iss >> contagiousness;							/* Get the contagiousness */
+		getline(iss, temp_str, ',');					/* Remove the delimeter */
+
+		// Create new ailment for patient
+		tempPatient.add_ailment(Ailment(ailmentName, severity, time_crit, contagiousness));
+
+	}
+
+	return tempPatient;
+
+}
+
+
+// Singleton Method Implementation
+
 MainProgram::MainProgram() {
 
 	// Process Input
@@ -39,6 +93,7 @@ void MainProgram::get_main_menu_selection() {
 			MainProgram::add_patient_menu();
 			break;
 
+
 		case 2:
 			MainProgram::process_next_patient();
 			break;
@@ -49,6 +104,10 @@ void MainProgram::get_main_menu_selection() {
 
 		case 4:
 			MainProgram::display_processed();
+			break;
+
+		case 5:
+			MainProgram::load_queue_menu();
 			break;
 
 		case 0:
@@ -174,6 +233,8 @@ void MainProgram::process_next_patient() {
 
 void MainProgram::display_queue() {
 
+	// TODO PRINTING IN WRONG ORDER
+
 	console::clear_screen();
 
 	// If the list is empty
@@ -257,3 +318,50 @@ void MainProgram::display_processed() {
 	console::wait_for_enter();
 
 }
+
+void MainProgram::load_queue_menu() {
+
+	console::clear_screen();
+
+	try {
+
+		std::cout << "Enter filepath: ";
+
+		// Get valid file from user
+		std::filesystem::path path = console::get_filepath();
+		load_from_file(path);
+
+	}
+	catch (std::invalid_argument e) {
+
+		console::wait_for_enter(e.what());
+		console::clear_screen();
+
+	}
+
+}
+
+void MainProgram::load_from_file(std::filesystem::path& const filePath) {
+
+	std::ifstream file(filePath);
+
+	if (!file.is_open()) {
+
+		throw std::invalid_argument("File not opened");
+
+	}
+
+	// Hold string values
+	std::string currLine;
+
+	//Iterate through every patient in the list
+	while (getline(file, currLine)) {
+
+		Patient tempPatient = add_patient_from_string(currLine);
+
+		untreatedPatients_.enqueue(tempPatient);
+
+	}
+
+}
+

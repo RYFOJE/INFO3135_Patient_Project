@@ -1,8 +1,3 @@
-
-#include <iostream>
-#include <sstream>size_
-#include <string>
-
 #include "console.hpp"
 
 namespace console
@@ -63,7 +58,7 @@ namespace console
 			try {
 				return std::stoi(str);
 			}
-			catch (std::invalid_argument& e) {
+			catch (std::invalid_argument&) {
 				return -1;
 			}
 			
@@ -83,6 +78,27 @@ namespace console
 		getline(std::cin, temp);
 		console::clear_screen();
 		return;
+
+	}
+
+	std::filesystem::path get_filepath() {
+
+		namespace fs = std::filesystem;
+
+		std::string str_fp;
+
+		// Get the file path
+		getline(std::cin, str_fp);
+
+		fs::path path(str_fp);
+
+		// If the file exists and can be opened
+		if (fs::exists(path) && fs::is_regular_file(path)) {
+			return path;
+		}
+
+		// If the file is not found
+		throw std::invalid_argument("File does not exist.");
 
 	}
 
