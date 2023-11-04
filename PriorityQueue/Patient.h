@@ -34,7 +34,7 @@ public:
 
 	// GETTERS
 	const std::string get_name() const;
-	LinkedList<Ailment> get_ailments();
+	LinkedList<Ailment>& get_ailments();
 	const score_t get_score() const; 
 
 

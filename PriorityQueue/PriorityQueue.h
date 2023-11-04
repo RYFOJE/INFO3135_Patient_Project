@@ -18,7 +18,6 @@ class PriorityQueue
 	*/
 	void sort() {
 
-
 		for (int i = 0; i < patients_.size(); i++) {
 
 			int temp = i;
@@ -40,7 +39,7 @@ public:
 	 * @param object	The object to add to the queue
 	*/
 	void enqueue(T object) {
-		patients_.push_front(object); // We push back so it will be the first sorted element
+		patients_.push_front(object); // We push front so it will be the first sorted element
 		sort();
 	};
 

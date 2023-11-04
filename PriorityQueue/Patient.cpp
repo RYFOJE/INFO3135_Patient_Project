@@ -23,7 +23,7 @@ const std::string Patient::get_name() const{
 	return name_;
 }
 
-LinkedList<Ailment> Patient::get_ailments()
+LinkedList<Ailment>& Patient::get_ailments()
 {
 	return ailments_;
 }
