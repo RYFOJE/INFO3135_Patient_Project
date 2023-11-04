@@ -170,8 +170,12 @@ public:
 
 	}
 
-	// TODO Find a better way to do this
-	T get_value_at_index(const size_t index) {
+	/**
+	 * @brief			Gets the data at a specific index
+	 * @param index		The index of the data to get
+	 * @return			The data at the specified index
+	*/
+	T get_data_at_index(const size_t index) {
 
 		Node* curr = get_at_index(index);
 
@@ -179,12 +183,20 @@ public:
 
 	}
 
+	/**
+	 * @brief	Gets the data at the tail of the list
+	 * @return	The data at the tail of the list
+	*/
 	T peek_tail() {
 
 		return tail_->data;
 
 	}
 
+	/**
+	 * @brief	Gets the data at the head of the list
+	 * @return	The data at the head of the list
+	*/
 	T peek_head() {
 
 		return head_->data;

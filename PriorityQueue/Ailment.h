@@ -21,7 +21,7 @@ class Ailment
 	score_t contagiousness_;
 
 public:
-	Ailment(std::string name = "empty", score_t severity = 1, score_t time_sensitivity = 1, score_t contagiousness = 1);
+	Ailment(std::string name, score_t severity, score_t time_sensitivity, score_t contagiousness);
 
 	// Getters
 	const std::string get_name() const { return name_; }
