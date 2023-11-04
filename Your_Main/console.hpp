@@ -10,12 +10,6 @@ namespace console {
 	
 	void print_main_menu();
 
-	// ADD PATIENT MENU
-
-	void add_patient_menu();
-	
-	void add_patient_ailment();
-
 	// OTHERS
 
 	int read_int();

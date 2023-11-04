@@ -24,27 +24,6 @@ namespace console
 		cout << "\t0 - Exit" << endl;
 	}
 
-	void add_patient_menu() {
-		using namespace std;
-		
-	}
-
-	void add_patient_ailment() {
-		
-		std::string ailmentName;
-		int contagiousness;
-		int time_criticality;
-		int severity;
-
-		// Read ailments until empty
-		while (std::getline(std::cin, ailmentName)) {
-			
-			if (ailmentName.empty()) return;
-
-		}
-
-	}
-
 	void clear_screen() {
 		// Clear the screen
 		std::cout << "\033[2J\033[1;1H";// TODO FIX THIS
