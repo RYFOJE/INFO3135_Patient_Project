@@ -21,6 +21,7 @@ public:
 
 		T data;
 
+		// This is the best way I can find that satisfies unit tests. Otherwise I would stored T data as a pointer instead
 		Node(const T& item) : data(item), previous(nullptr), next(nullptr) {}
 
 	};

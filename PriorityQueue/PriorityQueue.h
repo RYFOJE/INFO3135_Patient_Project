@@ -24,7 +24,7 @@ class PriorityQueue
 			int temp = i;
 			int j = i;
 
-			while (j > 0 && patients_.get_value_at_index(i) < patients_.get_value_at_index(j - 1)) {
+			while (j > 0 && patients_.get_data_at_index(i) < patients_.get_data_at_index(j - 1)) {
 				patients_.swap(j, j - 1);
 				j--;
 			}

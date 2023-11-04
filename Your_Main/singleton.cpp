@@ -250,7 +250,7 @@ void MainProgram::display_queue() {
 
 		// GET PATIENT AND PRINT INFO
 
-		Patient currPatient = currPatientList.get_value_at_index(i);
+		Patient currPatient = currPatientList.get_data_at_index(i);
 
 		std::cout << i << " : " << currPatient.get_name() << " - ";
 		std::cout << currPatient.get_score() << " - ";
@@ -260,7 +260,7 @@ void MainProgram::display_queue() {
 
 		// TODO Use smart pointer and enhanced for loop maybe
 		for (int i = 0; i < currAilments.size(); i++) {
-			std::cout << currAilments.get_value_at_index(i).get_name();
+			std::cout << currAilments.get_data_at_index(i).get_name();
 
 			// Add commas until last calue
 			if (i < currAilments.size() - 1) {
@@ -291,7 +291,7 @@ void MainProgram::display_processed() {
 
 		// GET PATIENT AND PRINT INFO
 
-		Patient currPatient = treatedPatients_.get_value_at_index(i);
+		Patient currPatient = treatedPatients_.get_data_at_index(i);
 
 		std::cout << currPatient.get_name() << " - ";
 		std::cout << currPatient.get_score() << " - ";
@@ -301,7 +301,7 @@ void MainProgram::display_processed() {
 
 		// TODO Use smart pointer and enhanced for loop maybe
 		for (int i = 0; i < currAilments.size(); i++) {
-			std::cout << currAilments.get_value_at_index(i).get_name();
+			std::cout << currAilments.get_data_at_index(i).get_name();
 
 			// Add commas until last value
 			if (i < currAilments.size() - 1) {
