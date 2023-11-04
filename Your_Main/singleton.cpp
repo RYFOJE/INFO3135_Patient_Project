@@ -57,8 +57,7 @@ Patient add_patient_from_string(std::string& const patient_str) {
 
 MainProgram::MainProgram() {
 
-	// Process Input
-	get_main_menu_selection();
+	get_main_menu_selection();		/* Load main menu */
 
 }
 
