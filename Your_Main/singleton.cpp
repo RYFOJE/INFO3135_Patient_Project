@@ -362,5 +362,7 @@ void MainProgram::load_from_file(std::filesystem::path& const filePath) {
 
 	}
 
+	file.close();
+
 }
 
