@@ -26,7 +26,7 @@ namespace console
 
 	void clear_screen() {
 		// Clear the screen
-		std::cout << "\033[2J\033[1;1H";// TODO FIX THIS
+		std::cout << "\033[2J\033[1;1H";
 	}
 
 	int read_int() {

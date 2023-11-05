@@ -151,14 +151,10 @@ public:
 
 		Node* currNode = head_;
 
+		if (index >= size_) throw std::out_of_range("Index out of range while using get_at_index()"
+
 		// Iterate through the linked list
 		for (int i = 0; i < index; i++) {
-
-			// Make sure there is a next node
-			// TODO MOVE THIS OUT OF THE LOOP AND COMPARE IT TO SIZE. THIS WILL OPTIMIZE
-			if (currNode->next == nullptr) {
-				throw std::out_of_range("Index out of range while using get_at_index()");
-			}
 
 			// Get the next node
 			currNode = currNode->next;

@@ -232,8 +232,6 @@ void MainProgram::process_next_patient() {
 
 void MainProgram::display_queue() {
 
-	// TODO PRINTING IN WRONG ORDER
-
 	console::clear_screen();
 
 	// If the list is empty
