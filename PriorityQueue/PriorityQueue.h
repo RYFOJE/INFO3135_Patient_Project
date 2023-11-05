@@ -51,6 +51,10 @@ public:
 		return patients_.pop_front();
 	}
 
+	/**
+	 * @brief  Returns the first element in the queue
+	 * @return First element in the queue
+	*/
 	T peek() {
 		return patients_.peek_head();
 	}
@@ -71,6 +75,10 @@ public:
 		return patients_.empty();
 	}
 
+	/**
+	 * @brief	Returns the list of patients
+	 * @return	The list of patients
+	*/
 	LinkedList<T>& get_patient_list() {
 		return patients_;
 	}
