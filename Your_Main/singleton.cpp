@@ -204,9 +204,6 @@ void MainProgram::process_next_patient() {
 		return;
 	}
 
-
-	// TODO Keep track of treated patients
-
 	Patient currPatient = untreatedPatients_.dequeue();
 	treatedPatients_.push_front(currPatient);
 

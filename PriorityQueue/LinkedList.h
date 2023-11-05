@@ -46,8 +46,8 @@ public:
 	/** LINKED LIST FUNCTIONS **/
 
 	/**
-	 * @brief		Adds an element to the beginning of the list
-	 * @param item	The item to add to the list
+	 * @brief			Adds an element to the beginning of the list
+	 * @param item		The item to add to the list
 	*/
 	void push_front(const T& item)
 {
@@ -68,8 +68,8 @@ public:
 }
 
 	/**
-	 * @brief		Adds an element to the end of the list
-	 * @param item	The item to add to the list
+	 * @brief			Adds an element to the end of the list
+	 * @param item		The item to add to the list
 	*/
 	void push_back(const T& item)
 	{
@@ -111,8 +111,8 @@ public:
 	}
 
 	/**
-	 * @brief	Removes the last element of the list and returns it
-	 * @return	The last element of the list of type T
+	 * @brief			Removes the last element of the list and returns it
+	 * @return			The last element of the list of type T
 	*/
 	T pop_back()
 	{
@@ -151,8 +151,10 @@ public:
 
 		Node* currNode = head_;
 
-		if (index >= size_) throw std::out_of_range("Index out of range while using get_at_index()"
-
+		if (index >= size_) {
+			throw std::out_of_range("Index out of range while using get_at_index()");
+		}
+		
 		// Iterate through the linked list
 		for (int i = 0; i < index; i++) {
 
@@ -179,8 +181,8 @@ public:
 	}
 
 	/**
-	 * @brief	Gets the data at the tail of the list
-	 * @return	The data at the tail of the list
+	 * @brief			Gets the data at the tail of the list
+	 * @return			The data at the tail of the list
 	*/
 	T& peek_tail() {
 
@@ -189,8 +191,8 @@ public:
 	}
 
 	/**
-	 * @brief	Gets the data at the head of the list
-	 * @return	The data at the head of the list
+	 * @brief			Gets the data at the head of the list
+	 * @return			The data at the head of the list
 	*/
 	T& peek_head() {
 
@@ -199,9 +201,9 @@ public:
 	}
 
 	/**
-	 * @brief				Swap two elements in the linked list
-	 * @param indexFrom		index to swap from
-	 * @param indexTo		index to swap to
+	 * @brief			Swap two elements in the linked list
+	 * @param indexFrom	index to swap from
+	 * @param indexTo	index to swap to
 	*/
 	void swap(size_t indexFrom, size_t indexTo) {
 		
