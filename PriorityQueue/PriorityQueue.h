@@ -23,7 +23,7 @@ class PriorityQueue
 			int temp = i;
 			int j = i;
 
-			while (j > 0 && patients_.get_data_at_index(i) < patients_.get_data_at_index(j - 1)) {
+			while (j > 0 && patients_.get_data_at_index(i) > patients_.get_data_at_index(j - 1)) {
 				patients_.swap(j, j - 1);
 				j--;
 			}
@@ -48,11 +48,11 @@ public:
 	 * @return	The first element in the queue
 	*/
 	T dequeue() {
-		return patients_.pop_back();
+		return patients_.pop_front();
 	}
 
 	T peek() {
-		return patients_.peek_tail();
+		return patients_.peek_head();
 	}
 
 	/**
