@@ -42,7 +42,6 @@ Ailment::Ailment(std::string name, score_t severity, score_t time_sensitivity, s
 
 }
 
-const score_t Ailment::get_score() const
-{
+const score_t Ailment::get_score() const {
 	return calculate_total_severity(*this);
 }
