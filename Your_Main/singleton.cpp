@@ -92,7 +92,6 @@ void MainProgram::get_main_menu_selection() {
 			MainProgram::add_patient_menu();
 			break;
 
-
 		case 2:
 			MainProgram::process_next_patient();
 			break;
@@ -107,6 +106,10 @@ void MainProgram::get_main_menu_selection() {
 
 		case 5:
 			MainProgram::load_queue_menu();
+			break;
+
+		case 6:
+			MainProgram::save_queue_menu();
 			break;
 
 		case 0:
@@ -361,3 +364,67 @@ void MainProgram::load_from_file(std::filesystem::path const &filePath) {
 
 }
 
+void MainProgram::save_queue_menu() {
+	
+	console::clear_screen();
+
+	try {
+
+		std::cout << "Enter filepath: ";
+
+		// Get valid file from user
+		std::filesystem::path path = console::get_filepath(false);
+		save_to_file(path);
+
+	}
+	catch (std::invalid_argument e) {
+
+		console::wait_for_enter(e.what());
+		console::clear_screen();
+
+	}
+	
+}
+
+void MainProgram::save_to_file(std::filesystem::path const& path) {
+
+	std::ofstream ofs(path);
+	
+	LinkedList<Patient>& currPatientList = untreatedPatients_.get_patient_list();
+
+	for (int i = 0; i < currPatientList.size(); i++) {
+		
+		Patient currPatient = currPatientList.get_data_at_index(i);
+
+		ofs << currPatient.get_name() << ",";
+		ofs << currPatient.get_ailments().size() << ",";
+
+		// Get ailments list
+		LinkedList<Ailment>& currAilments = currPatient.get_ailments();
+
+		// TODO Use smart pointer and enhanced for loop maybe
+		for (int i = 0; i < currAilments.size(); i++) {
+
+			// Get the current ailment
+			Ailment currAilment = currAilments.get_data_at_index(i);
+			
+			// Print out ailment and data associated to it
+			ofs << currAilment.get_name() << ",";
+			ofs << currAilment.get_severity() << ",";
+			ofs << currAilment.get_time_sensitivity() << ",";
+			ofs << currAilment.get_contagiousness();
+
+			// Add commas until last value
+			if (i < currAilments.size() - 1) {
+				ofs << ", ";
+			}
+
+		} // End ailment loop
+
+		ofs << std::endl;
+		
+	}
+
+	ofs.close();
+
+}

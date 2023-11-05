@@ -93,6 +93,16 @@ private:
 	void load_from_file(std::filesystem::path const &path);
 
 
+	/**
+	 * @brief Displays the save queue menu and wait for input
+	 * 
+	 * Main Menu > Save Queue
+	*/
+	void save_queue_menu();
+
+	void save_to_file(std::filesystem::path const& path);
+	
+
 	// Private copy constructor and assignment operator to prevent copying therefore making it a singleton
 	MainProgram(const MainProgram&) = delete;
 	MainProgram& operator=(const MainProgram&) = delete;

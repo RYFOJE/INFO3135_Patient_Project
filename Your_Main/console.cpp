@@ -60,7 +60,7 @@ namespace console
 
 	}
 
-	std::filesystem::path get_filepath() {
+	std::filesystem::path get_filepath(bool const isInput) {
 
 		namespace fs = std::filesystem;
 
@@ -72,7 +72,7 @@ namespace console
 		fs::path path(str_fp);
 
 		// If the file exists and can be opened
-		if (fs::exists(path) && fs::is_regular_file(path)) {
+		if (fs::exists(path) && fs::is_regular_file(path) || !isInput) {
 			return path;
 		}
 
