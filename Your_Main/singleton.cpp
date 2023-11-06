@@ -428,3 +428,21 @@ void MainProgram::save_to_file(std::filesystem::path const& path) {
 	ofs.close();
 
 }
+
+bool MainProgram::is_duplicate_patient(Patient const& patient)
+{
+	
+	LinkedList<Patient>& currPatientList = untreatedPatients_.get_patient_list();	/* Get the list of untreated patients */
+
+	for (int i = 0; i < currPatientList.size(); i++) {								/* Iterate through the list */
+
+		Patient& currPatient = currPatientList.get_data_at_index(i);				/* Get the current patient to compare to */
+
+		if (patient.get_name() == currPatient.get_name())							/* If they are duplicates */
+			return true;
+
+	}
+
+	return false;
+	
+}

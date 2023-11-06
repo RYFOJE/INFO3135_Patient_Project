@@ -100,7 +100,18 @@ private:
 	*/
 	void save_queue_menu();
 
+	/**
+	 * @brief			Helper function that saves all patients to a file
+	 * @param path		The path to the file to save to
+	*/
 	void save_to_file(std::filesystem::path const& path);
+
+	/**
+	 * @brief			Helper function that check to see if a patient is a duplicate
+	 * @param patient	The patient to check
+	 * @return			True if duplicate, false if otherwise
+	*/
+	bool is_duplicate_patient(Patient const& patient);
 	
 
 	// Private copy constructor and assignment operator to prevent copying therefore making it a singleton
