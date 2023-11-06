@@ -4,7 +4,7 @@
 
 /**
  * @brief		The LinkedList class will hold the data for each patient in the hospital in order
- * @tparam T	The type of data to hold in the list
+ * @param T		The type of data to hold in the list
 */
 template <typename T>
 class LinkedList
@@ -22,7 +22,7 @@ public:
 		T data;
 
 		// TODO Maybe do not use a reference and instead accpet a direct object
-		Node(const T& item) : data(item), previous(nullptr), next(nullptr) {}
+		Node(T item) : data(item), previous(nullptr), next(nullptr) {}
 
 	};
 
