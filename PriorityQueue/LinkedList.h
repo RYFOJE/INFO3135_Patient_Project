@@ -4,7 +4,7 @@
 
 /**
  * @brief		The LinkedList class will hold the data for each patient in the hospital in order
- * @tparam T	The type of data to hold in the list
+ * @param T		The type of data to hold in the list
 */
 template <typename T>
 class LinkedList
@@ -21,8 +21,8 @@ public:
 
 		T data;
 
-		// This is the best way I can find that satisfies unit tests. Otherwise I would stored T data as a pointer instead
-		Node(const T& item) : data(item), previous(nullptr), next(nullptr) {}
+		// TODO Maybe do not use a reference and instead accpet a direct object
+		Node(T item) : data(item), previous(nullptr), next(nullptr) {}
 
 	};
 

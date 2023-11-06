@@ -12,16 +12,14 @@ Patient add_patient_from_string(std::string const &patient_str) {
 
 	// Get patient name
 	std::string name;
-	getline(iss, name, ','); // Get with delimeter ','
+	getline(iss, name, ',');							/* Get with delimeter ',' */
 
-	Patient tempPatient(name);
+	Patient tempPatient(name);							/* Create a new patient that will be populated from the string */
 
-	// Get ailment count
-	unsigned ailmentCount;
-	iss >> ailmentCount;
+	unsigned ailmentCount;							
+	iss >> ailmentCount;								/* Get the ailment count */
 
-	// tmp string for removing delimeters
-	std::string temp_str;
+	std::string temp_str;								/* tmp string for removing delimeters */
 
 	// Remove delimeter
 	getline(iss, temp_str, ',');
@@ -43,7 +41,7 @@ Patient add_patient_from_string(std::string const &patient_str) {
 		iss >> contagiousness;							/* Get the contagiousness */
 		getline(iss, temp_str, ',');					/* Remove the delimeter */
 
-		// Create new ailment for patient
+		// Create new ailment for patient and append it to the patients ailments
 		tempPatient.add_ailment(Ailment(ailmentName, severity, time_crit, contagiousness));
 
 	}
@@ -68,13 +66,10 @@ void MainProgram::get_main_menu_selection() {
 
 	while (true) {
 		
-		// Clear the screen
 		console::clear_screen();
-
-		// Print the main menu on singleton load
 		console::print_main_menu();
 
-		if (isInvalid) {
+		if (isInvalid) {										/* If the previous input was invalid */
 			std::cout << std::endl << "Invalid selection, please try again" << std::endl;
 			isInvalid = false;
 		}
@@ -135,16 +130,15 @@ void MainProgram::add_patient_menu() {
 		std::string patientName;
 
 		std::cout << "Enter Patient Name (leave blank to finish):";
-		std::getline(std::cin, patientName);
+		std::getline(std::cin, patientName);				/* Get the patients name */
 
-		// If empty return to menu
-		if (patientName.empty()) return;
+		if (patientName.empty()) return;					/* If an empty string was given */
 
 		Patient tempPatient(patientName);
 
-		add_ailment_menu(tempPatient);
+		add_ailment_menu(tempPatient);						/* Main Menu > Add Patient > Add Ailment */
 
-		untreatedPatients_.enqueue(tempPatient);
+		untreatedPatients_.enqueue(tempPatient);			/* Add the new user to the list of untreated patients */
 	}
 }
 
@@ -157,39 +151,34 @@ void MainProgram::add_ailment_menu(Patient& patient) {
 		
 		console::clear_screen();
 		
-		// If the last input was invalid, print the error message
-		if (isInvalid) {
+		if (isInvalid) {									/* If the previous input was invalid */
 			std::cout << errorMsg << std::endl;
 			std::cout << "Please Try Again." << std::endl;
 			isInvalid = false;
 		}
 
-		// Get the ailment name and check if empty
 		std::string ailmentName;
 
 		std::cout << "Enter Ailment Name (leave blank to finish): ";
 		getline(std::cin, ailmentName);
 		
-		// If empty return patient
-		if (ailmentName.empty()) return;
+		if (ailmentName.empty()) return;					/* If an empty string was returned from the user */
 
-		// Get severity
 		std::cout << "Enter Severity: ";
-		int severity = console::read_int();
+		int severity = console::read_int();					/* Get the severity */
 
-		// Get time criticality
 		std::cout << "Enter Time Criticality: ";
-		int time_criticality = console::read_int();
+		int time_criticality = console::read_int();			/* Get the time criticality */
 
 		std::cout << "Enter Contagiousness: ";
-		int contagiousness = console::read_int();
+		int contagiousness = console::read_int();			/* Get Contagiousness */
 
 		
-		try {
+		try {												/* Use a try catch to see if the ailment is using all valid parameters */
 			Ailment tempAilment(ailmentName, severity, time_criticality, contagiousness);
 			patient.add_ailment(tempAilment);
 		}
-		catch (std::invalid_argument& e) {
+		catch (std::invalid_argument& e) {					/* If the ailment was invalid */
 			errorMsg = e.what();
 			isInvalid = true;
 		}
@@ -201,25 +190,26 @@ void MainProgram::process_next_patient() {
 	
 	console::clear_screen();
 
-	// If there are no patient to process return empty
-	if (untreatedPatients_.empty()) {
+	if (untreatedPatients_.empty()) {						/* If there are no patients left to process */
 		console::wait_for_enter("All patients have been processed");
 		return;
 	}
 
-	Patient currPatient = untreatedPatients_.dequeue();
-	treatedPatients_.push_front(currPatient);
+	//TODO Change this to use references instead
+	Patient currPatient = untreatedPatients_.dequeue();		/* Get the next patient to be treated */
+	treatedPatients_.push_front(currPatient);				/* Add the patient to your treated patient list*/
 
 	std::cout << currPatient.get_name() << " moved to patient room!" << std::endl;
 
 	// If that was the last patient left in the list exit
-	if (untreatedPatients_.empty()) {
+	if (untreatedPatients_.empty()) {						/* If there are no patients left to process */
 		std::cout << "All patients have been processed" << std::endl;
 	}
 
 	else {
 
-		Patient const nextPatient = untreatedPatients_.peek();
+		// TODO Use reference
+		Patient const nextPatient = untreatedPatients_.peek();	/* Peek at the next patient to be treated */
 
 		std::cout << "Next in queue: " << nextPatient.get_name();
 		std::cout << " with priority score " << nextPatient.get_score() << std::endl;
@@ -234,34 +224,31 @@ void MainProgram::display_queue() {
 
 	console::clear_screen();
 
-	// If the list is empty
-	if (untreatedPatients_.empty()) {
+	if (untreatedPatients_.empty()) {						/* If the patient queue is empty */
 		console::wait_for_enter("Patient list is empty");
 		return;
 	}
 
+	LinkedList<Patient>& currPatientList = untreatedPatients_.get_patient_list();	/* Get a list of all the untreated patient */
 
-	// Get a list of all the untreated patient
-	LinkedList<Patient>& currPatientList = untreatedPatients_.get_patient_list();
+	for (int i = 0; i < currPatientList.size(); i++) {		/* Iterate through all untreated patients */
 
-	for (int i = 0; i < currPatientList.size(); i++) {
-
-		// GET PATIENT AND PRINT INFO
+		// GET PATIENT AND PRINT NAME
 
 		Patient currPatient = currPatientList.get_data_at_index(i);
 
 		std::cout << i << " : " << currPatient.get_name() << " - ";
 		std::cout << currPatient.get_score() << " - ";
 
-		// PRINT AILMENTS
-		LinkedList<Ailment> currAilments = currPatient.get_ailments();
+		// PRINT PATIENTS AILMENTS
+		LinkedList<Ailment>& currAilments = currPatient.get_ailments();		/* Get a reference to the linked list for the patients ailments */
 
 		// TODO Use smart pointer and enhanced for loop maybe
 		for (int i = 0; i < currAilments.size(); i++) {
-			std::cout << currAilments.get_data_at_index(i).get_name();
+			std::cout << currAilments.get_data_at_index(i).get_name();		/* Get the name of the ailment */
 
-			// Add commas until last calue
-			if (i < currAilments.size() - 1) {
+			// Add commas until last value
+			if (i < currAilments.size() - 1) {								/* Add comma until last ailment */
 				std::cout << ", ";
 			}
 
@@ -279,13 +266,12 @@ void MainProgram::display_processed() {
 
 	console::clear_screen();
 
-	// If the list is empty
-	if (treatedPatients_.empty()) {
+	if (treatedPatients_.empty()) {											/* If no patients have been treated */
 		console::wait_for_enter("No treated patients");
 		return;
 	}
 
-	for (int i = 0; i < treatedPatients_.size(); i++) {
+	for (int i = 0; i < treatedPatients_.size(); i++) {						/* Iterate through all treated patients */
 
 		// GET PATIENT AND PRINT INFO
 
