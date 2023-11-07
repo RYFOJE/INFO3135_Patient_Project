@@ -64,7 +64,7 @@ void MainProgram::get_main_menu_selection() {
 	int selection;
 	bool isInvalid = false;
 
-	while (true) {
+	while (true) {								/* This is the main loop of the whole program */
 		
 		console::clear_screen();
 		console::print_main_menu();
@@ -107,10 +107,10 @@ void MainProgram::get_main_menu_selection() {
 			MainProgram::save_queue_menu();
 			break;
 
-		case 0:
+		case 0:										/* Exit program */
 			return;
 			
-		default:
+		default:									/* If the given value is invalid */
 			
 			isInvalid = true;
 			break;
