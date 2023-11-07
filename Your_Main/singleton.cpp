@@ -334,6 +334,7 @@ void MainProgram::load_from_file(std::filesystem::path const &filePath) {
 
 	std::ifstream file(filePath);
 
+
 	if (!file.is_open()) {
 
 		throw std::invalid_argument("File not opened");
@@ -343,20 +344,33 @@ void MainProgram::load_from_file(std::filesystem::path const &filePath) {
 	// Hold string values
 	std::string currLine;
 
-	//Iterate through every patient in the list
-	while (getline(file, currLine)) {
+	unsigned int duplicateCount = 0;								/* Holds how many duplicate values were not added */
+	unsigned int addedCount = 0;									/* Holds how many total patients have been added */
 
-		Patient tempPatient = add_patient_from_string(currLine);
+	while (getline(file, currLine)) {								/* Iterate line by line in the file */
 
-		if (is_duplicate_patient(tempPatient)) {				/* Do not add duplicate patients */
+		Patient tempPatient = add_patient_from_string(currLine);	/* Get the current patient to verify and-or add */
+
+		if (is_duplicate_patient(tempPatient)) {					/* Do not add duplicate patients */
+			duplicateCount++;
 			continue;
 		}
 
-		untreatedPatients_.enqueue(tempPatient);
+		addedCount++;
+		untreatedPatients_.enqueue(tempPatient);					/* Add patient to queue */
 
 	}
 
 	file.close();
+
+	console::clear_screen();
+	std::cout << addedCount << " patients added to the list." << std::endl;
+
+	if (duplicateCount != 0) {										/* If there has been duplicate values print the count */
+		std::cout << duplicateCount << " duplicate patients not added." << std::endl;
+	}
+
+	console::wait_for_enter();
 
 }
 
