@@ -348,6 +348,10 @@ void MainProgram::load_from_file(std::filesystem::path const &filePath) {
 
 		Patient tempPatient = add_patient_from_string(currLine);
 
+		if (is_duplicate_patient(tempPatient)) {				/* Do not add duplicate patients */
+			continue;
+		}
+
 		untreatedPatients_.enqueue(tempPatient);
 
 	}
