@@ -136,6 +136,12 @@ void MainProgram::add_patient_menu() {
 
 		Patient tempPatient(patientName);
 
+		if (is_duplicate_patient(tempPatient)) {			/* If the patient is a duplicate */
+			console::clear_screen();
+			console::wait_for_enter("This is a duplicate patient, please retry");
+			continue;
+		}
+		
 		add_ailment_menu(tempPatient);						/* Main Menu > Add Patient > Add Ailment */
 
 		untreatedPatients_.enqueue(tempPatient);			/* Add the new user to the list of untreated patients */
