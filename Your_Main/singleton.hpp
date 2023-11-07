@@ -9,7 +9,10 @@
 #include <fstream>
 #include <sstream>
 
-
+/**
+ * @brief	The MainProgram class will hold the data for the whole program and all 
+ *			the methods to run the program.
+*/
 class MainProgram {
 	
 public:
